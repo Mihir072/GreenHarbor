@@ -1,6 +1,6 @@
-import 'package:ui_13/data/plant_model.dart';
+import 'package:GreenHarbor/data/plant_model.dart';
 
-List<Plants> plants = [
+List<Plants> myPlants = [
   Plants(
     id: 0,
     name: 'Succuient',
@@ -8,7 +8,7 @@ List<Plants> plants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 75.00,
+    price: 150.00,
     isFavorit: false,
   ),
   Plants(
@@ -18,7 +18,7 @@ List<Plants> plants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 75.00,
+    price: 200.00,
     isFavorit: false,
   ),
   Plants(
@@ -28,7 +28,7 @@ List<Plants> plants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 60.00,
+    price: 120.00,
     isFavorit: false,
   ),
   Plants(
@@ -51,7 +51,7 @@ List<Plants> populerPlants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 75.00,
+    price: 250.00,
     isFavorit: false,
   ),
   Plants(
@@ -61,7 +61,7 @@ List<Plants> populerPlants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 75.00,
+    price: 150.00,
     isFavorit: false,
   ),
   Plants(
@@ -71,7 +71,7 @@ List<Plants> populerPlants = [
     category: 'Office',
     description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. ',
-    price: 60.00,
+    price: 260.00,
     isFavorit: false,
   ),
 ];

@@ -1,4 +1,4 @@
-name: ui_13
+name: GreenHarbor
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -34,6 +34,13 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  velocity_x: ^4.1.1
+  pinput: ^4.0.0
+  firebase_core: ^2.25.5
+  firebase_auth: ^4.17.6
+  shared_preferences: ^2.2.2
+  curved_navigation_bar: ^1.0.3
+  cloud_firestore: ^4.15.8
 
 dev_dependencies:
   flutter_test:
@@ -45,6 +52,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo3.jpeg"
+  min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -82,3 +96,8 @@ flutter:
           weight: 700
         - asset: assets/fonts/Gilroy-Medium.ttf
           weight: 500
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+          

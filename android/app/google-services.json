@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246617189921",
+    "project_id": "green-harbor",
+    "storage_bucket": "green-harbor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246617189921:android:48ccf1993d7754e1e63d60",
+        "android_client_info": {
+          "package_name": "com.example.ui_13"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO57XcotpnKWXz5kp7jXvABCgf19ApGHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
