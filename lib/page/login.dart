@@ -1,4 +1,5 @@
 import 'package:GreenHarbor/core/color.dart';
+import 'package:GreenHarbor/page/forgotpassword.dart';
 import 'package:GreenHarbor/page/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +122,13 @@ class _LoginInState extends State<LoginIn> {
                 children: [
                   Padding(padding: EdgeInsets.only(left: 40)),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPassword(),
+                          ));
+                    },
                     child: const Text(
                       'Forgot Password?',
                       style: TextStyle(
