@@ -10,3 +10,5 @@ const Color grey = Color(0xFF9C9C9C);
 const Color lightGrey = Color(0xFFEBEBEB);
 const Color barcolor = Color(0xFFd8e4bc);
 const Color txtcolor = Color(0xFF6D6C6C);
+const Color circle = Color(0xFF232b2b);
+const Color fillfield = Color(0xFFfefefe);

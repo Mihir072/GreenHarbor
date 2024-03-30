@@ -1,8 +1,11 @@
 import 'package:GreenHarbor/core/color.dart';
 import 'package:GreenHarbor/data/bottumnav.dart';
 import 'package:GreenHarbor/page/login.dart';
+import 'package:GreenHarbor/service/database.dart';
+import 'package:GreenHarbor/service/shared_pref.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -34,6 +37,18 @@ class _SignUpState extends State<SignUp> {
             style: TextStyle(fontSize: 20.0),
           ),
         )));
+
+        String Id = randomAlphaNumeric(10);
+        Map<String, dynamic> addUserInfo = {
+          'Name': namecontroller.text,
+          'Email': emailcontroller.text,
+          'Id': Id,
+        };
+        await DatabaseMothed().addUserDetail(addUserInfo, Id);
+        await SharedPreferanceHelper().saveUserName(namecontroller.text);
+        await SharedPreferanceHelper().saveUserEmail(emailcontroller.text);
+        await SharedPreferanceHelper().saveUserWallet('0');
+        await SharedPreferanceHelper().saveUserId(Id);
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(

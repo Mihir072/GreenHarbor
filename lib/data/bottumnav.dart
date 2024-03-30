@@ -1,3 +1,4 @@
+import 'package:GreenHarbor/admin/admin_login.dart';
 import 'package:GreenHarbor/core/color.dart';
 import 'package:GreenHarbor/page/home.dart';
 import 'package:GreenHarbor/page/order.dart';
@@ -21,15 +22,15 @@ class _BottumNavState extends State<BottumNav> {
   late HomePage home;
   late Order order;
   late Wallet wallet;
-  late Profile profile;
+  late AdminLogin admin_login;
 
   @override
   void initState() {
     home = const HomePage();
     order = const Order();
     wallet = const Wallet();
-    profile = const Profile();
-    pages = [home, order, wallet, profile];
+    admin_login = const AdminLogin();
+    pages = [home, order, wallet, admin_login];
     super.initState();
   }
 

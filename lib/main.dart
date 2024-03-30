@@ -1,16 +1,14 @@
+import 'package:GreenHarbor/admin/admin_home.dart';
 import 'package:GreenHarbor/data/bottumnav.dart';
-import 'package:GreenHarbor/page/home.dart';
-import 'package:GreenHarbor/data/otp.dart';
-import 'package:GreenHarbor/data/phone.dart';
 import 'package:GreenHarbor/page/login.dart';
-import 'package:GreenHarbor/page/signup.dart';
+import 'package:GreenHarbor/widgets/app_constant.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
-import 'page/splash.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = publishableKey;
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -28,10 +26,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Gilroy',
       ),
+      // home: AdminHome(),
       initialRoute: 'LoginIn', // Set initial route
       routes: {
-        'LoginIn': (context) => LoginIn(), // Define login page route
-        'BottumNav': (context) => BottumNav(), // Define home page route
+        'LoginIn': (context) => const LoginIn(),
+        'BottumNav': (context) => const BottumNav(),
       },
     );
   }

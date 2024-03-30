@@ -1,8 +1,11 @@
 import 'package:GreenHarbor/core/color.dart';
+import 'package:GreenHarbor/page/login.dart';
+import 'package:GreenHarbor/page/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {
-  ForgotPassword({Key? key}) : super(key: key);
+  const ForgotPassword({Key? key}) : super(key: key);
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -11,13 +14,33 @@ class ForgotPassword extends StatefulWidget {
 class _ForgotPasswordState extends State<ForgotPassword> {
   final _formkey = GlobalKey<FormState>();
 
-  TextEditingController emailcontroller = new TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  String email = "";
+
+  resetPassword() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+        "Password Reset Email has been sent ! ",
+        style: TextStyle(fontSize: 15.0, fontFamily: 'Poppins'),
+      )));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user_not_found") {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+          "No user found for that email.",
+          style: TextStyle(fontSize: 18.0),
+        )));
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Container(
+      body: SingleChildScrollView(
         child: Center(
           child: Form(
             key: _formkey,
@@ -50,8 +73,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(
-                        top: 40, right: 30, left: 30, bottom: 100),
+                    padding: const EdgeInsets.only(
+                      top: 40,
+                      right: 30,
+                      left: 30,
+                    ),
                     child: TextFormField(
                       controller: emailcontroller,
                       validator: (value) {
@@ -65,29 +91,27 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             borderRadius: BorderRadius.circular(40),
                           ),
                           hintText: 'Email',
-                          hintStyle: TextStyle(color: Colors.white),
+                          hintStyle: const TextStyle(color: Colors.white),
                           prefixIcon: const Icon(
                             Icons.email_outlined,
                             color: white,
                           )),
+                      style: const TextStyle(color: Colors.white),
                     )),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                  ),
+                  padding: const EdgeInsets.only(top: 40, bottom: 20),
                   child: GestureDetector(
                     onTap: () {
-                      // if (_formkey.currentState!.validate()) {
-                      //   setState(() {
-                      //     email = useremailcontroller.text;
-                      //     password = userpasswordcontroller.text;
-                      //   });
-                      // }
-                      // userLogin();
+                      if (_formkey.currentState!.validate()) {
+                        setState(() {
+                          email = emailcontroller.text;
+                        });
+                        resetPassword();
+                      }
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 80.0,
+                        horizontal: 100.0,
                         vertical: 12.0,
                       ),
                       decoration: BoxDecoration(
@@ -95,7 +119,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: const Text(
-                        "Login In ",
+                        "Send Email ",
                         style: TextStyle(
                             color: black,
                             fontSize: 16,
@@ -103,6 +127,56 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             fontFamily: 'Poppins'),
                       ),
                     ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Don't have an account?",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUp()));
+                      },
+                      child: const Text(
+                        " Create",
+                        style: TextStyle(
+                            color: Colors.yellow, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 250, right: 200),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.arrow_back_rounded,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginIn()));
+                        },
+                        child: const Text(
+                          " back to Login",
+                          style: TextStyle(
+                              color: Colors.yellow,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ],

@@ -1,3 +1,5 @@
+import 'package:GreenHarbor/service/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:GreenHarbor/core/color.dart';
 import 'package:GreenHarbor/data/category_model.dart';
@@ -17,10 +19,35 @@ class _HomePageState extends State<HomePage> {
   PageController controller = PageController();
   List<Plants> cartItems = []; // Declare cartItems here
 
+  Stream? fooditemStream;
+
+  ontheload() async {
+    fooditemStream = await DatabaseMothed().getFoodItem("Pizza");
+    setState(() {});
+  }
+
   @override
   void initState() {
+    ontheload();
     controller = PageController(viewportFraction: 0.6, initialPage: 0);
     super.initState();
+  }
+
+  Widget allItems() {
+    return StreamBuilder(
+        stream: fooditemStream,
+        builder: (context, AsyncSnapshot snapshot) {
+          return snapshot.hasData
+              ? ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  itemCount: snapshot.data.doc.lenght,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot ds = snapshot.data.docs[index];
+                  })
+              : CircularProgressIndicator();
+        });
   }
 
   @override
